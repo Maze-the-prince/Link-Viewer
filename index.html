@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Jura 3D</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="Inter/Inter.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="module" src="/model-viewer2.js"></script>
+    <script nomodule="" src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer-legacy.js"></script>
+    <script nomodule="" src="https://unpkg.com/focus-visible@5.1.0/dist/focus-visible.js"></script>
+    <style type="text/css">
+        canvas{
+            outline: none !important;
+            border: 0px;
+        }
+        .container canvas:focus{
+            outline: none !important;
+            border: 0px;
+        }
+        button:focus{
+            outline: none !important;
+        }
+        .openArBtn{
+            line-height: 50px;
+            font-family: "Inter Light";
+            border-radius: 10px;
+            border: 1px solid #525f6b;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #525f6b;
+            color: #fff;
+        }
+        .openArBtn:hover{
+            border: 1px solid #9a7348;
+            background-color: #9a7348;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="text-align: center">
+        <div style="display: inline-block; width: 800px; height: 800px;text-align: center;">
+            <model-viewer class="mvc" alt="Jura" data-js-focus-visible="" src="/devices/GIGA10_dbl_2022.glb" ios-src="/devices/GIGA10_dbl_2022.usdz" magic-leap="" ar="" camera-controls="" style="width: 800px !important; height: 800px !important; border: 0px; outline: none;" border="0" ar-status="not-presenting"></model-viewer>
+        </div>
+        <br>
+        <button data-toggle="modal" class="openArBtn" data-target="#qrcode"><img src="camera_white.svg" style="width: 50px; float: left; outline: none;"> <span style="padding-left: 5px;">Augmented Reality</span></button>
+    </div>
+    <div id="qrcode" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Jura 3D" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center"><img src="camera.svg" style="width: 30px; "> Augmented Reality</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <img src="/qrcode.php?device=GIGA10_dbl_2022" width="200">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#viewerObj" ).trigger("dblclick" );
+            $("#viewerObj").trigger("touchstart");
+            $("#viewerObj").focus();
+        });
+
+    </script>
+
+</body></html>
