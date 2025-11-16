@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>AR 3D Viewer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+
+    <!-- Bootstrap + Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Inter/Inter.css">
+
+    <!-- Required Scripts -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@1.12.0/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/focus-visible@5.1.0/dist/focus-visible.js"></script>
+
+    <style type="text/css">
+        canvas {
+            outline: none !important;
+            border: 0px;
+        }
+
+        /* Your custom AR button style */
+        .openArBtn{
+            line-height: 50px;
+            font-family: "Inter Light";
+            border-radius: 10px;
+            border: 1px solid #525f6b;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #525f6b;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .openArBtn:hover{
+            border: 1px solid #9a7348;
+            background-color: #9a7348;
+        }
+
+        /* Position your custom AR button INSIDE model-viewer */
+        model-viewer {
+            position: relative;
+        }
+        model-viewer > button[slot="ar-button"] {
+            position: absolute;
+            left: 50%;
+            bottom: 16px;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* Hide the default AR button completely */
+        model-viewer::part(ar-button) {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <div style="display: inline-block; width: 800px; height: 800px; text-align: center;">
+
+            <!-- MODEL VIEWER -->
+            <model-viewer id="viewerObj"
+                src="Assests/Bed.glb"
+                ios-src="Assests/Bed.usdz"
+                alt="Jura Bed"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                camera-controls
+                style="width: 800px !important; height: 800px !important; border: 0px; outline: none;">
+
+                <!-- ⭐ YOUR CUSTOM AR BUTTON (this triggers AR automatically) -->
+                <button slot="ar-button" class="openArBtn">
+                    <img src="Assests/camera_white.svg" style="width: 40px; margin-right: 10px;">
+                    <span>Augmented Reality</span>
+                </button>
+
+            </model-viewer>
+        </div>
+    </div>
+
+</body>
+</html>
